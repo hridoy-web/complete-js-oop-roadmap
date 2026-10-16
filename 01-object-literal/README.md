@@ -21,27 +21,77 @@ An **Object** is a standalone entity with properties and methods. It is a collec
 const person = {
   name: "Hridoy Chowdhury", // Property
   age: 21,                  // Property
-  
+
   // Method
   getSummary: function () {
     return `${this.name} is ${this.age} years old.`;
   }
 };
-🔍 Understanding the this Keyword1. Why do we use this?The this keyword inside an object method refers to the current object instance that is executing the code.JavaScript// ✅ Recommended: Using 'this'
+
+```
+
+---
+
+## 🔍 Understanding the `this` Keyword
+
+### 1. Why do we use `this`?
+
+The `this` keyword inside an object method refers to the **current object instance** that is executing the code.
+
+```javascript
+// ✅ Recommended: Using 'this'
 getSummary: function () {
   return `${this.name} is ${this.age} years old.`;
 }
-2. Can we use the object name instead of this?Yes, you can write person.name instead of this.name:JavaScript// ❌ Not Recommended: Hardcoding object name
+
+```
+
+### 2. Can we use the object name instead of `this`?
+
+Yes, you can write `person.name` instead of `this.name`:
+
+```javascript
+// ❌ Not Recommended: Hardcoding object name
 getSummary: function () {
   return `${person.name} is ${person.age} years old.`;
 }
-3. Why is this much better than hardcoding object names?Flexibility: If you assign the object to a new variable (e.g., const user = person), hardcoded person.name will break if person changes or becomes null. But this.name will automatically adapt to user.name.Scalability in OOP: When you create blueprints (Classes or Constructor Functions) to generate multiple objects (user1, user2, user3), you cannot hardcode variable names inside the blueprint. Using this is the only way to refer to the object dynamically created at runtime.⚠️ Note on Arrow Functions: Arrow functions () => {} do not have their own this binding. They inherit this from the parent lexical scope. Always use regular functions function() {} when defining methods inside object literals if you plan to use this.🔑 Accessing PropertiesAccess MethodSyntaxBest Use CaseExampleDot Notationobject.keyKnown / Static keysperson.nameBracket Notationobject["key"]Dynamic keys or property names with spacesperson[keyName]Example:JavaScript// Dot Notation
+
+```
+
+### 3. Why is `this` much better than hardcoding object names?
+
+1. **Flexibility:** If you assign the object to a new variable (e.g., `const user = person`), hardcoded `person.name` will break if `person` changes or becomes `null`. But `this.name` will automatically adapt to `user.name`.
+2. **Scalability in OOP:** When you create blueprints (Classes or Constructor Functions) to generate multiple objects (`user1`, `user2`, `user3`), you cannot hardcode variable names inside the blueprint. Using `this` is the only way to refer to the object dynamically created at runtime.
+
+> ⚠️ **Note on Arrow Functions:** Arrow functions `() => {}` do **not** have their own `this` binding. They inherit `this` from the parent lexical scope. Always use regular functions `function() {}` when defining methods inside object literals if you plan to use `this`.
+
+---
+
+## 🔑 Accessing Properties
+
+| Access Method | Syntax | Best Use Case | Example |
+| --- | --- | --- | --- |
+| **Dot Notation** | `object.key` | Known / Static keys | `person.name` |
+| **Bracket Notation** | `object["key"]` | Dynamic keys or property names with spaces | `person[keyName]` |
+
+### Example:
+
+```javascript
+// Dot Notation
 console.log(person.name); // "Hridoy Chowdhury"
 
 // Bracket Notation (Dynamic Key)
 const keyName = "skills";
 console.log(person[keyName]); // ["HTML", "CSS", "JavaScript"]
-🛠️ CRUD Operations on ObjectsJavaScript// 1. Add Property
+
+```
+
+---
+
+## 🛠️ CRUD Operations on Objects
+
+```javascript
+// 1. Add Property
 person.email = "hridoy@example.com";
 
 // 2. Update Property
@@ -49,6 +99,16 @@ person.age = 22;
 
 // 3. Delete Property
 delete person.student;
-💻 How to Run the CodeRun the code via Node.js in your terminal:
-Bash
+
+```
+
+---
+
+## 💻 How to Run the Code
+
+Run the code via Node.js in your terminal:
+
+```bash
 node index.js
+
+```
