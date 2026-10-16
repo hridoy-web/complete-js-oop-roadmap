@@ -1,5 +1,6 @@
 // ==========================================
 // Topic: Object Literal in JavaScript
+// Module: 01
 // ==========================================
 
 // ------------------------------------------
@@ -15,6 +16,7 @@ const person = {
   skills: ["HTML", "CSS", "JavaScript", "TypeScript", "Express.js", "MongoDB", "Mongoose"],
 
   // Method (Function inside object)
+  // Why 'this'? 'this' dynamically refers to the current object (person).
   getDeveloperSummary: function () {
     return `${this.name} is a ${this.age}-year-old Full-Stack Developer living in ${this.city}. Tech stack: ${this.skills.join(", ")}.`;
   }
@@ -23,22 +25,21 @@ const person = {
 // ------------------------------------------
 // 2. Accessing Object Properties
 // ------------------------------------------
+console.log("--- Accessing Properties ---");
 
-// A. Dot Notation (.) - Used for static keys (When property name is known)
-console.log("--- Dot Notation ---");
-console.log(person.name); // Output: Hridoy Chowdhury
-console.log(person.getDeveloperSummary()); // Output: Summary string
+// A. Dot Notation (.) - Used for static/known keys (95% common)
+console.log("Name (Dot Notation):", person.name); // Output: Hridoy Chowdhury
+console.log("Summary Method:", person.getDeveloperSummary()); // Output: Summary string
 
 // B. Bracket Notation ([]) - Used for dynamic keys or keys with spaces
-console.log("\n--- Bracket Notation ---");
-console.log(person["name"]); // Output: Hridoy Chowdhury
+console.log("Name (Bracket Notation):", person["name"]); // Output: Hridoy Chowdhury
 
 // Dynamic key use-case:
 const propertyName = "skills";
-console.log(person[propertyName]); // Accesses person.skills dynamically
+console.log("Dynamic Access (Skills):", person[propertyName]); // Accesses person.skills dynamically
 
 // ------------------------------------------
-// 3. Modifying Object Properties (CRUD Operations)
+// 3. Modifying Object Properties 
 // ------------------------------------------
 
 // Add new properties
