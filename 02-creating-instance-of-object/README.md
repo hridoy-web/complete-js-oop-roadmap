@@ -9,7 +9,7 @@ Welcome to Module 02 of the **JavaScript OOP Series**! In this module, we explor
 1. **Hands-on Coding:** Open VS Code and type out the code in `index.js` line-by-line rather than copy-pasting.
 2. **Run & Inspect:** Run `node index.js` in your terminal and check the output using `console.log()`.
 3. **Read the Docs:** If anything is confusing, read through this `README.md` carefully.
-4. **Ask AI Tools:** If you get stuck on a concept (like `this` or dynamic keys), copy the snippet and ask ChatGPT or Gemini to explain it in simple terms.
+4. **Ask AI Tools:** If you get stuck on any concept, copy the code snippet and ask your preferred AI tool to explain it in simple terms.
 
 ---
 
@@ -20,17 +20,64 @@ An **Object Instance** is a concrete object created in memory using a constructo
 ```javascript
 // Creates a new empty object instance in memory
 const person = new Object();
-🔑 Key Concepts Explained1. Is new Keyword Optional?Yes, calling Object() without new still creates an object instance. However, using new Object() is strongly recommended because:It aligns with standard Object-Oriented Programming (OOP) syntax.It prepares you for custom Constructor Functions and Classes where new is mandatory.2. Why Use this Instead of Object Name?Inside object methods:JavaScript// ✅ Recommended: Dynamic and scalable
-return `${this.name} is a ${this.role}`;
 
-// ❌ Not Recommended: Hardcoded object name
-return `${person.name} is a ${person.role}`;
-Flexibility: If you reassign the object (const user = person), this automatically points to the new variable reference without breaking.OOP Readiness: When creating multiple instances using Classes later, hardcoding variable names is impossible—this is required.Note on Arrow Functions: Arrow functions () => {} do not have their own this binding. Always use regular functions function() {} for object methods when accessing properties via this.🚀 Accessing PropertiesAccess MethodSyntaxBest Use CaseExampleDot Notationobject.keyKnown / Static keysperson.roleBracket Notationobject["key"]Dynamic keys or variable keysperson[keyName]Example:JavaScript// Static key access
+```
+
+---
+
+## 🔑 Key Concepts Explained
+
+### 1. Is the `new` Keyword Optional for `Object()`?
+
+Yes, calling `Object()` without `new` still creates an object instance in JavaScript. However, using `new Object()` is **strongly recommended** because:
+
+* It aligns with standard Object-Oriented Programming (OOP) conventions.
+* It prepares you for custom Constructor Functions and Classes where `new` is mandatory.
+
+### 2. Using `this` in Methods
+
+As covered in Module 01, using `this` inside methods allows your code to dynamically refer to the current object instance rather than hardcoding variable names.
+
+> ⚠️ **Reminder:** Arrow functions `() => {}` do not have their own `this` binding. Always use regular functions `function() {}` when defining methods that rely on `this`.
+
+---
+
+## 🚀 Accessing Properties
+
+| Access Method | Syntax | Best Use Case | Example |
+| --- | --- | --- | --- |
+| **Dot Notation** | `object.key` | Known / Static keys | `person.role` |
+| **Bracket Notation** | `object["key"]` | Dynamic keys or variable keys | `person[keyName]` |
+
+### Example:
+
+```javascript
+// Static key access
 console.log(person.role); // "Full-Stack Developer"
 
 // Dynamic key access using variable
 const keyName = "city";
 console.log(person[keyName]); // "Chittagong"
-🛠️ Modifying PropertiesJavaScript// Delete a property
+
+```
+
+---
+
+## 🛠️ Modifying Properties
+
+```javascript
+// Delete a property from the instance
 delete person.city;
-💻 How to Run the CodeRun the code via Node.js in your terminal:Bashnode index.js
+
+```
+
+---
+
+## 💻 How to Run the Code
+
+Run the code via Node.js in your terminal:
+
+```bash
+node index.js
+
+```
